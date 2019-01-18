@@ -1,0 +1,16 @@
+<!-- NAVBAR -->
+    <nav class="flex-container">
+        <div class="logo"></div>
+        <h1>Blind News</h1>
+        <a href="/#/home">Home</a>
+        <a href="/#/about">About</a>
+        <a href="/#/archive">Archive</a>
+        <a href="/#/login" ng-show="!user" class="logoutButton">Login</a>
+        <a href="/#/createArticle" ng-if="profile.role == 'admin' || profile.role == 'writer'" class="createArticleButton"><b>Create Article</b></a>
+        <button class="logoutButton" ng-show="user" ng-click="logout()">LOGOUT</button>
+    </nav>
+    <div class="yellowBar" ng-show="user">
+        Welcome<span>, {{user.displayName}}</span>!
+        <div class="displayImage" style="background-image: url({{user.photoURL}});"></div>
+
+    </div>   

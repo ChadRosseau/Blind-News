@@ -1,0 +1,50 @@
+<div class="container">
+    <h1>ARCHIVE</h1>
+    <div class="articleFilter" ng-init="filter = 'all'">
+    	<p ng-click="filter = 'all'" ng-class="{active: filter == 'all'}">All</p>
+    	<p ng-click="filter = 'Politics'" ng-class="{active: filter == 'Politics'}">Politics</p>
+    	<p ng-click="filter = 'Science'" ng-class="{active: filter == 'Science'}">Science</p>
+    	<p ng-click="filter = 'History'" ng-class="{active: filter == 'History'}">History</p>
+    	<p ng-click="filter = 'Economics'" ng-class="{active: filter == 'Economics'}">Economics</p>
+    	<p ng-click="filter = 'City'" ng-class="{active: filter == 'City'}">City</p>
+    	<p ng-click="filter = 'City'" ng-class="{active: filter == 'Technology'}">Technology</p>
+    	<p ng-click="filter = 'Breaking News'" ng-class="{active: filter == 'Breaking News'}">Breaking News</p>
+    </div>
+</div>
+
+<!-- Articles -->
+<div class="container">
+	<div class="archArticles">
+		<!-- First 5 -->
+		<div class="archArticle" ng-repeat="article in articles" ng-show="article.tags.includes(filter) || filter == 'all'" ng-if="$index<5"
+		ng-click="articleS(article)">
+			<div class="innerArch" style="background-image: url({{article.url}});">
+				<div class="homeArtInfo">
+					<h3>{{article.title}}</h3>
+					<h4>{{article.subTitle}}</h4>
+					<div class="homeTags">
+						<!-- TO DO: Conditional based on tag to change color of line. -->
+						<div class="line"></div>
+						<p ng-repeat="tag in article.tags">{{tag}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="archArticles">
+		<!-- Second 5 -->
+		<div class="archArticle" ng-repeat="article in articles" ng-show="article.tags.includes(filter) || filter == 'all'" ng-if="$index>4" ng-click="articleS(article)">
+			<div class="innerArch" style="background-image: url({{article.url}});">
+				<div class="homeArtInfo">
+					<h3>{{article.title}}</h3>
+					<h4>{{article.subTitle}}</h4>
+					<div class="homeTags">
+						<!-- TO DO: Conditional based on tag to change color of line. -->
+						<div class="line"></div>
+						<p ng-repeat="tag in article.tags">{{tag}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

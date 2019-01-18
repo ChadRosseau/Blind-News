@@ -1,0 +1,47 @@
+<div class="articleWrap" ng-show="chosenArticle">
+	<div class="articleHolder" ng-init="edit = false">
+		<button ng-if="profile.role == 'admin' || profile.role == 'writer'" ng-click="$parent.edit = true" ng-show="!$parent.edit">EDIT</button>
+		<button ng-if="profile.role == 'admin' || profile.role == 'writer'" ng-click="editArticle(chosenArticle); $parent.edit = false" ng-show="$parent.edit">SAVE</button>
+		<h1 ng-show="!edit">{{chosenArticle.title}}</h1>
+		<input ng-if="profile.role == 'admin' || profile.role == 'writer'"  ng-show="edit" type="text" name="" ng-model="chosenArticle.title" style="font-size: 2em; display: block;">
+		<h3 ng-show="!edit">{{chosenArticle.subTitle}}</h3>
+		<input ng-if="profile.role == 'admin' || profile.role == 'writer'"  ng-show="edit" type="text" name="" ng-model="chosenArticle.subTitle" style="font-size: 1.17em; display: block;">
+		<h5 ng-show="!edit">
+			{{chosenArticle.author}} - {{chosenArticle.date}}
+		</h5>
+		<h5 ng-show="edit">
+			<input ng-if="profile.role == 'admin' || profile.role == 'writer'"  type="text" name="" ng-model="chosenArticle.author"> 
+			- 
+			<input ng-if="profile.role == 'admin' || profile.role == 'writer'" type="text" name="" ng-model="chosenArticle.date">
+		</h5>
+		<div class="articleImg" style="background-image: url({{chosenArticle.url}});"></div>
+		<div class="bodyWrap" >
+			<div ng-bind-html="chosenArticle.body"></div>
+
+		</div>
+		<div class="tagsWrap">
+			<p ng-repeat="tag in chosenArticle.tags">
+				{{tag}}
+			</p>
+		</div>
+		<br>
+		<h3>More articles...</h3>
+		<div class="miniPreviewWrap">
+			<!-- Second 5 -->
+			<div class="archArticle" ng-repeat="article in articles" ng-show="article.tags.includes(chosenArticle.tags[0]) && article.title!=chosenArticle.title" ng-if="$index<6" ng-click="articleS(article)">
+				<div class="innerArch" style="background-image: url({{article.url}});">
+					<div class="homeArtInfo">
+						<h3>{{article.title}}</h3>
+						<h4>{{article.subTitle}}</h4>
+						<div class="homeTags">
+							<!-- TO DO: Conditional based on tag to change color of line. -->
+							<div class="line"></div>
+							<p ng-repeat="tag in article.tags">{{tag}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>

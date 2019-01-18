@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>About</h1>
+    <div class="ask">
+        <h3>Who are you?</h3>
+        <input type="text" ng-model="new.name" name="">
+        <h3>What is your job?</h3>
+        <input type="text" ng-model="new.job" name="">
+        <h3>Is this too dificult?</h3>
+        <select ng-model="new.difficult">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+    </div>
+    <div class="answer" ng-show="new.name && new.job && new.difficult">
+    	<p>Hi! My name is {{new.name}} and I am a {{new.job}}, and 
+    		<span ng-if="new.difficult == 'yes'"> yes, this is much too difficult!</span> 
+    		<span ng-if="new.difficult == 'no'"> no, this is just fine!</span>
+    	</p>
+    </div>
+    <br>
+    <div class="try">
+    	<h2>Try this out!</h2>
+    	<input type="text" ng-model="try" name="">
+    	<h2>{{try}}</h2>
+    </div>
+</div>

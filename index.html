@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" lang="en" ng-app="myApp" ng-controller="mainCtrl">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Alertify -->
+    <link rel="stylesheet" href="alertify/css/alertify.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/themes/default.min.css"/>
+    <!-- Sim Editor -->
+    <link rel="stylesheet" type="text/css" href="simditor/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="simditor/css/simditor.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Blind News</title>
+</head>
+
+<body>
+    <navbar></navbar>
+    <!-- ALL WEBSITE IN HERE -->
+    <div ng-view></div>
+
+    <!-- Footer -->
+    <myfooter></myfooter>
+      
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-functions.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-storage.js"></script>
+    <script>
+
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDPExHlm2_t8Z5NoQkw5BWmimRdfCfOOD0",
+        authDomain: "awesome-df6d5.firebaseapp.com",
+        databaseURL: "https://awesome-df6d5.firebaseio.com",
+        projectId: "awesome-df6d5",
+        storageBucket: "awesome-df6d5.appspot.com",
+        messagingSenderId: "675608208276"
+    };
+    firebase.initializeApp(config);
+    var database = firebase.database()
+    </script>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script> 
+    <script type="text/javascript" src="dist/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js"></script>
+    <!-- Alertify -->
+    <script src="alertify/js/alertify.min.js"></script>
+
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="mainCtrl.js"></script>
+    <script type="text/javascript" src="articleCtrl.js"></script>
+    <script type="text/javascript" src="simditor/js/simditor-all.js"></script>
+    <script type="text/javascript" src="simditor/js/angular-editor.js"></script>
+    <script type="text/javascript" src="adminCtrl.js"></script>
+</body>
+
+</html>

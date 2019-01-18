@@ -1,0 +1,55 @@
+<div class="container" ng-controller="articleCtrl">
+	<div class="createArticleWrapper" ng-if="profile.role == 'admin' || profile.role == 'writer'">
+		<h2>Create New Article</h2>
+		<label>Title:
+			<input type="text" name="" ng-model="newArticle.title">
+		</label>
+		<label>Subtitle:
+			<input type="text" name="" ng-model="newArticle.subTitle">
+		</label>
+		<label>Author:
+			<input type="text" name="" ng-model="newArticle.author">
+		</label>
+		<label>Body:
+			<div simditor ng-model='newArticle.body' id="editable"></div>
+		</label>
+		<h3>Tags</h3>
+		<label>Politics: 
+			<input type="checkbox" name="" ng-model="newArticle.tags.politics" value="politics">
+		</label>
+		<label>Science: 
+			<input type="checkbox" name="" ng-model="newArticle.tags.science" value="science">
+		</label>
+		<label>History: 
+			<input type="checkbox" name="" ng-model="newArticle.tags.history" value="history">
+		</label>
+		<label>Economics: 
+			<input type="checkbox" name="" ng-model="newArticle.tags.economics" value="economics">
+		</label>
+		<label>City: 
+			<input type="checkbox" name="" ng-model="newArticle.tags.city" value="city">
+		</label>
+		<label>Technology: 
+			<input type="checkbox" name="" ng-model="newArticle.tags.technology" value="technology">
+		</label>
+		<label>Breaking News: 
+			<input type="checkbox" name="" ng-model="newArticle.tags.breakingNews" value="breakingNews">
+		</label>
+		<label>	
+			<input type="file" id="fileUpload" name="">
+		</label>
+		<button class="submitBtn" ng-click="createArticle(newArticle)" ng-show="newArticle.title && newArticle.subTitle && newArticle.body">SUBMIT</button>
+	</div>
+	<div ng-show="profile.role!='admin' && profile.role!='writer'">
+		<div>
+			You must be an admin or a writer to access this page!
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
