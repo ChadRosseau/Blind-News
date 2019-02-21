@@ -11,6 +11,7 @@
          let newArticle;
 
          $scope.createArticle = function(article) {
+
              $scope.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
              var getImage = document.getElementById("fileUpload");
              var file;
@@ -18,25 +19,25 @@
              var storageRef = firebase.storage().ref();
              var tags = [];
              if (article.tags.politics) {
-                tags.push("Politics");
+                 tags.push("Politics");
              };
              if (article.tags.science) {
-                tags.push("Science");
+                 tags.push("Science");
              };
              if (article.tags.history) {
-                tags.push("History");
+                 tags.push("History");
              };
              if (article.tags.economics) {
-                tags.push("Economics");
+                 tags.push("Economics");
              };
              if (article.tags.city) {
-                tags.push("City");
+                 tags.push("City");
              };
              if (article.tags.Technology) {
-                tags.push("Technology");
+                 tags.push("Technology");
              };
              if (article.tags.breakingNews) {
-                tags.push("Breaking News");
+                 tags.push("Breaking News");
              };
 
 
@@ -79,7 +80,8 @@
                                  title: article.title,
                                  subTitle: article.subTitle,
                                  author: article.author,
-                                 body: article.body,
+                                 webBody: article.body,
+                                 appBody: article.body.replace(/<\/?[^>]+(>|$)/g, ""),
                                  tags: tags,
                                  url: downloadURL,
                                  key: newKey,
@@ -90,8 +92,7 @@
                          });
 
                      });
-                     
-                     console.log(newArticle)
+
                      $state.go("article");
 
                  } catch (error) {
