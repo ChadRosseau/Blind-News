@@ -12,13 +12,13 @@
 
          $scope.createArticle = function(article) {
              $scope.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+             var getImage = document.getElementById("fileUpload");
              document.getElementById('fileUpload').onchange = function(evt) {
                 ImageTools.resize(this.files[0], {
                     width: 320, // maximum width
                     height: 240 // maximum height
                 });
              };
-             var getImage = document.getElementById("fileUpload");
              var file;
              var newKey = firebase.database().ref().child('articles').push().key;
              var storageRef = firebase.storage().ref();
@@ -96,7 +96,8 @@
                          });
 
                      });
-
+                     
+                     console.log(newArticle)
                      $state.go("article");
 
                  } catch (error) {
