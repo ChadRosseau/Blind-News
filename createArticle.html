@@ -37,7 +37,9 @@
 		</label>
 		<label>	
 			<input type="file" id="fileUpload" name="">
+			<p id="imageName"></p>
 		</label>
+		<div id="preview"></div>
 		<button class="submitBtn" ng-click="createArticle(newArticle)" ng-show="newArticle.title && newArticle.subTitle && newArticle.body">SUBMIT</button>
 	</div>
 	<div ng-show="profile.role!='admin' && profile.role!='writer'">

@@ -388,6 +388,8 @@ nav h1 {
 	line-height: 100%;
 }
 
+/* Article Preview */
+
 .articleWrap {
 	max-width: 900px;
 	margin: 0 auto;
@@ -451,6 +453,13 @@ nav h1 {
 /*Create Article*/
 .createArticleWrapper label {
 	display: block;
+}
+
+#preview {
+	height: 200px;
+	width: 200px;
+	background-position: center;
+	background-size: cover;
 }
 
 /*Simditor*/

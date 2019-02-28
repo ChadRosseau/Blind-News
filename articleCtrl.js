@@ -10,39 +10,70 @@
 
          let newArticle;
 
+         //RESIZING
+         var file;
+         var fileName = null;
+         var fileButton;
+
+         var fileButton;
+
+         setTimeout(function() {
+             fileButton = document.getElementById('fileUpload');
+             console.log(fileButton)
+
+
+             fileButton.addEventListener("change", function(e) {
+
+                 file = fileButton.files[0];
+                 fileName = file.name;
+                 document.getElementById('imageName').innerHTML = fileName;
+                 // RESIZING!
+                 ImageTools.resize(this.files[0], {
+                     width: 700, // maximum width
+                     height: 700 // maximum height
+
+                 }, function(blob, didItResize) {
+                     // didItResize will be true if it managed to resize it, otherwise false (and will return the original file as 'blob')
+                     var url = window.URL.createObjectURL(blob);
+                     console.log(url)
+                     document.getElementById('preview').style.backgroundImage = "url(" + url + ")";
+                     // you can also now upload this blob using an XHR.
+                     file = blob;
+
+                 });
+
+             })
+         }, 2000)
+
+
+
+
+
          $scope.createArticle = function(article) {
              $scope.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-             var getImage = document.getElementById("fileUpload");
-             document.getElementById('fileUpload').onchange = function(evt) {
-                ImageTools.resize(this.files[0], {
-                    width: 320, // maximum width
-                    height: 240 // maximum height
-                });
-             };
-             var file;
              var newKey = firebase.database().ref().child('articles').push().key;
              var storageRef = firebase.storage().ref();
              var tags = [];
              if (article.tags.politics) {
-                tags.push("Politics");
+                 tags.push("Politics");
              };
              if (article.tags.science) {
-                tags.push("Science");
+                 tags.push("Science");
              };
              if (article.tags.history) {
-                tags.push("History");
+                 tags.push("History");
              };
              if (article.tags.economics) {
-                tags.push("Economics");
+                 tags.push("Economics");
              };
              if (article.tags.city) {
-                tags.push("City");
+                 tags.push("City");
              };
              if (article.tags.Technology) {
-                tags.push("Technology");
+                 tags.push("Technology");
              };
              if (article.tags.breakingNews) {
-                tags.push("Breaking News");
+                 tags.push("Breaking News");
              };
 
 
@@ -50,7 +81,7 @@
 
              alertify.confirm('Create Article?', 'Are you sure you want to post this article?', function() {
                  try {
-                     var uploadTask = storageRef.child('gallery/' + newKey + "/" + getImage.files[0].name).put(getImage.files[0]);
+                     var uploadTask = storageRef.child('gallery/' + newKey + "/" + fileName).put(file);
                      // Register three observers:
                      // 1. 'state_changed' observer, called any time the state changes
                      // 2. Error observer, called on failure
@@ -85,7 +116,8 @@
                                  title: article.title,
                                  subTitle: article.subTitle,
                                  author: article.author,
-                                 body: article.body,
+                                 webBody: article.body,
+                                 appBody: article.body.replace(/<\/?[^>]+(>|$)/g, ""),
                                  tags: tags,
                                  url: downloadURL,
                                  key: newKey,
@@ -96,8 +128,6 @@
                          });
 
                      });
-                     
-                     console.log(newArticle)
                      $state.go("article");
 
                  } catch (error) {

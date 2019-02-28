@@ -59,7 +59,7 @@
         $scope.articleS = function(article) {
             $state.go("article");
             $rootScope.chosenArticle = article;
-            $rootScope.chosenArticle.body = $sce.trustAsHtml(article.body);
+            $rootScope.chosenArticle.webBody = $sce.trustAsHtml(article.webBody);
             window.scrollTo(0, 0);
         }
 
@@ -85,7 +85,8 @@
                      title: article.title,
                      subTitle: article.subTitle,
                      author: article.author,
-                     body: article.body.toString(),
+                     webBody: article.body.toString(),
+                     appBody: article.body.toString().replace(/<\/?[^>]+(>|$)/g, ""),
                      tags: article.tags,
                      url: article.url,
                      key: article.key,
