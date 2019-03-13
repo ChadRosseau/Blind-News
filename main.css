@@ -431,6 +431,10 @@ nav h1 {
 	margin-top: 0px;
 }
 
+.bodyWrap {
+	display: flex;
+}
+
 .tagsWrap {
 	display: flex;
 	display: -webkit-flex;
@@ -471,6 +475,9 @@ nav h1 {
 	max-height: 400px;
 }
 
+.simditor .simditor-toolbar li {
+	max-width: 45px;
+}
 /* Footer */
 
 .footer {
