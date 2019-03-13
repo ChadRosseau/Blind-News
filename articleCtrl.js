@@ -116,7 +116,7 @@
                                  title: article.title,
                                  subTitle: article.subTitle,
                                  author: article.author,
-                                 webBody: article.body,
+                                 webBody: "<br>" + article.body,
                                  appBody: article.body.replace(/<\/?[^>]+(>|$)/g, ""),
                                  tags: tags,
                                  url: downloadURL,
