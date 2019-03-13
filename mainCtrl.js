@@ -85,8 +85,6 @@
                      title: article.title,
                      subTitle: article.subTitle,
                      author: article.author,
-                     webBody: article.body.toString(),
-                     appBody: article.body.toString().replace(/<\/?[^>]+(>|$)/g, ""),
                      tags: article.tags,
                      url: article.url,
                      key: article.key,
