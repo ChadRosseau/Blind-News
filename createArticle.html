@@ -2,13 +2,13 @@
 	<div class="createArticleWrapper" ng-if="profile.role == 'admin' || profile.role == 'writer'">
 		<h2>Create New Article</h2>
 		<label>Title:
-			<input type="text" name="" ng-model="newArticle.title">
+			<input type="text" name="" ng-model="newArticle.title" maxlength="40">
 		</label>
 		<label>Subtitle:
-			<input type="text" name="" ng-model="newArticle.subTitle">
+			<input type="text" name="" ng-model="newArticle.subTitle" maxlength="60">
 		</label>
 		<label>Author:
-			<input type="text" name="" ng-model="newArticle.author">
+			<input type="text" name="" ng-model="newArticle.author" maxlength="20">
 		</label>
 		<label>Body:
 			<div simditor ng-model='newArticle.body' id="editable"></div>
@@ -37,7 +37,9 @@
 		</label>
 		<label>	
 			<input type="file" id="fileUpload" name="">
+			<p id="imageName"></p>
 		</label>
+		<div id="preview"></div>
 		<button class="submitBtn" ng-click="createArticle(newArticle)" ng-show="newArticle.title && newArticle.subTitle && newArticle.body">SUBMIT</button>
 	</div>
 	<div ng-show="profile.role!='admin' && profile.role!='writer'">
