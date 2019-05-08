@@ -26,7 +26,7 @@
 		<br>
 		<h3>More articles...</h3>
 		<div class="miniPreviewWrap">
-			<div class="archArticle" ng-repeat="article in articles" ng-show="article.title!=chosenArticle.title" ng-if="$index<6" ng-click="articleS(article)">
+			<div class="archArticle" ng-repeat="article in articles" ng-show="article.title!=chosenArticle.title" ng-if="$index<4" ng-click="articleS(article)">
 				<div class="innerArch" style="background-image: url({{article.url}});">
 					<div class="homeArtInfo">
 						<h3>{{article.title}}</h3>
