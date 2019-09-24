@@ -19,7 +19,7 @@ src: local('Helvetica Neue LT Std 45 Light'), url('HelveticaNeueLTStd Lt.woff') 
 }
 
 body {
-	background-color: #F1F1F1;
+	background-color: red;
 }
 
 button:focus, button:active {
