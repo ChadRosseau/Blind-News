@@ -4,7 +4,6 @@
      .controller('mainCtrl', function($rootScope, $scope, $location, $state, $firebaseObject, $firebaseArray, $sce) {
          // CHECK USER
          var user = firebase.auth().currentUser;
-         alert("hi");
          firebase.auth().onAuthStateChanged(function(user) {
              if (user) {
                  console.log("I'm logged in!");
