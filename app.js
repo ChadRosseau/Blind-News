@@ -1,6 +1,6 @@
 angular.module("myApp", [])
 
-var app = angular.module("myApp", ["ngRoute", "ui.router", "firebase"]);
+var app = angular.module("myApp", ["ngRoute", "ui.router", "firebase", "simditor"]);
 
 
 app.directive('navbar', function() {
@@ -71,7 +71,7 @@ app.config(function($routeProvider) {
             templateUrl: "archive.html",
         })
 
-        .when("/article/:a", {
+        .when("/article", {
             templateUrl: "article.html",
         })
 

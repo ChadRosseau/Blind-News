@@ -16,8 +16,7 @@
 <div class="container">
 	<div class="archArticles">
 		<!-- First 5 -->
-		<div class="archArticle" ng-repeat="article in articles" ng-show="article.tags.includes(filter) || filter == 'all'" ng-if="$index<5"
-		ng-click="articleS(article)">
+		<div class="archArticle" ng-repeat="article in articles" ng-show="article.tags.includes(filter) || filter == 'all'" ng-if="$index<5" ng-click="goArticle(article.key)">
 			<div class="innerArch" style="background-image: url({{article.url}});">
 				<div class="homeArtInfo">
 					<h3>{{article.title}}</h3>
@@ -33,7 +32,7 @@
 	</div>
 	<div class="archArticles">
 		<!-- Second 5 -->
-		<div class="archArticle" ng-repeat="article in articles" ng-show="article.tags.includes(filter) || filter == 'all'" ng-if="$index>4" ng-click="articleS(article)">
+		<div class="archArticle" ng-repeat="article in articles" ng-show="article.tags.includes(filter) || filter == 'all'" ng-if="$index>4" ng-click="goArticle(article.key)">
 			<div class="innerArch" style="background-image: url({{article.url}});">
 				<div class="homeArtInfo">
 					<h3>{{article.title}}</h3>

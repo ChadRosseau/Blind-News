@@ -1,9 +1,11 @@
  "use strict";
+
  angular.module("myApp")
 
-     .controller('mainCtrl', function($rootScope, $scope, $location, $state, $firebaseObject, $firebaseArray, $sce) {
+     .controller('mainCtrl', function($rootScope, $window, $scope, $location, $state, $firebaseObject, $firebaseArray, $sce) {
          // CHECK USER
          var user = firebase.auth().currentUser;
+
          firebase.auth().onAuthStateChanged(function(user) {
              if (user) {
                  console.log("I'm logged in!");
@@ -12,6 +14,7 @@
                  let ref = database.ref("users/" + user.uid);
                  let siteInfo = $firebaseObject(ref);
                  $scope.profile = siteInfo;
+
 
              } else {
                  console.log("No user");
@@ -27,6 +30,10 @@
              }).catch(function(error) {
                  console.log("Not signed out");
              });
+         }
+
+         $scope.goArticle = function(key) {
+            $window.location.href = '/#/article/' + key;
          }
 
 
@@ -54,27 +61,20 @@
 
          var date = new Date();
 
-         $scope.articleS = function(article) {
-             $state.go("article");
-             $rootScope.chosenArticle = article;
-             $rootScope.chosenArticle.webBody = $sce.trustAsHtml(article.webBody);
-             window.scrollTo(0, 0);
+
+
+         // New Profile
+         $scope.createUser = function(newUser) {
+             var user = firebase.auth().currentUser;
+             var dob = newUser.dob;
+             var email = newUser.email;
+             firebase.database().ref('users/' + user.uid).set({
+                 fullName: newUser.fullName,
+                 dob: dob,
+                 email: email,
+                 role: "user"
+             });
          }
-
-         // // New Profile
-         // $scope.createUser = function(newUser) {
-         //     var user = firebase.auth().currentUser;
-         //     var date = new Date(newUser.dob)
-         //     var day = date.getDay();
-         //     var month = date.getMonth();
-         //     var year = date.getFullYear();
-
-         //     firebase.database().ref('users/' + user.uid).set({
-         //         fullName: newUser.name,
-         //         dob: `${day}/${month}/${year}`,
-         //         role: "user"
-         //     });
-         // }
 
          $scope.editArticle = function(article) {
 
@@ -94,4 +94,67 @@
              database.ref("articles/" + article.key).set(editedArticle);
              window.location.replace("/#/archive");
          }
+
+
+         // Get all users
+         $scope.getUsers = function() {
+             let allUsers = database.ref("users");
+             allUsers = $firebaseArray(allUsers);
+             $scope.allUsers = allUsers;
+             let userEmails = [];
+             let userEmailsString = "";
+             allUsers.$loaded()
+                 .then(function() {
+                     angular.forEach(allUsers, function(user) {
+                         userEmails.push(user.email);
+                         userEmailsString = userEmailsString + ", " + user.email;
+                     })
+                     userEmailsString = userEmailsString.slice(2);
+                     console.log(userEmails);
+                     console.log(userEmailsString);
+                     $scope.allEmails = userEmailsString;
+                 })
+         }
+
+         $scope.getUsers();
+
+
+
+
+
+     })
+
+
+
+     .controller('chosenCtrl', function($rootScope, $scope, $location, $state, $firebaseObject, $firebaseArray, $sce) {
+
+         const articleBody = document.getElementById("articleBody");
+
+         var promise1 = new Promise(function(resolve, reject) {
+             setTimeout(function() {
+
+                 let url = $location.path();
+                 url = url.slice(9, 40);
+                 console.log(url);
+
+                 let ref = database.ref("articles/" + url);
+                 let siteInfo = $firebaseObject(ref);
+                 $rootScope.chosenArticle = siteInfo;
+                 resolve($rootScope.chosenArticle);
+
+             }, 1000);
+         });
+
+         promise1.then(function(value) {
+             setTimeout(function() {
+                console.log(value.webBody)
+                 value.webBody = $sce.trustAsHtml(value.webBody);
+                 articleBody.innerHTML = value.webBody;
+             }, 300);
+
+         });
+
+
+
+
      })

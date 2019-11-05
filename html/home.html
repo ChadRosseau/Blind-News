@@ -1,15 +1,15 @@
 <div class="container">
-	<div class="homeArticles">
-		<div class="homeArticle" ng-repeat="article in articles | limitTo: 6 " style="background-image: url({{article.url}});" ng-click="articleS(article)">
-			<div class="homeArtInfo">
-				<h3>{{article.title}}</h3>
-				<h4>{{article.subTitle}}</h4>
-				<div class="homeTags">
-					<!-- TO DO: Conditional based on tag to change color of line. -->
-					<div class="line"></div>
-					<p ng-repeat="tag in article.tags">{{tag}}</p>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="homeArticles">
+        <div class="homeArticle" ng-repeat="article in articles | limitTo: 6 " style="background-image: url({{article.url}});" ng-click="goArticle(article.key)">
+            <div class="homeArtInfo">
+                <h3>{{article.title}}</h3>
+                <h4>{{article.subTitle}}</h4>
+                <div class="homeTags">
+                    <!-- TO DO: Conditional based on tag to change color of line. -->
+                    <div class="line"></div>
+                    <p ng-repeat="tag in article.tags">{{tag}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
