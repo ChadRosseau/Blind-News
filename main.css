@@ -7,7 +7,7 @@ Black: #000;
 Silver: #BFBFBF;
 Light grey: #F1F1F1;
 White: #FFF;
-Saffron Yellow: #FBC034;
+DC Blue: #00509a;
 */
 
 /*General*/
@@ -54,7 +54,7 @@ nav a {
 }
 
 nav a:hover {
-	color: #FBC034;
+	color: #00509a;
 	text-decoration: none;
 }
 
@@ -70,7 +70,7 @@ nav h1 {
 }
 
 .createArticleButton:hover {
-	border: 2px solid #FBC034;
+	border: 2px solid #00509a;
 }
 
 .logoutButton {
@@ -85,9 +85,9 @@ nav h1 {
 }
 
 .logoutButton:hover {
-	border: 2px solid #FBC034;
+	border: 2px solid #00509a;
 	background-color: transparent;
-	color: #FBC034;
+	color: #00509a;
 }
 
 .logo {
@@ -114,7 +114,7 @@ nav h1 {
 	justify-content: center;
 	-webkit-justify-content: center;
 	-ms-justify-content: center;
-	background-color: #FBC034;
+	background-color: #00509a;
 	color: #FFF;
 	font-size: 14px;
 }
@@ -281,7 +281,7 @@ nav h1 {
 }
 
 .articleFilter p:hover {
-	background-color: #FBC034;
+	background-color: #00509a;
 }
 
 
@@ -407,7 +407,7 @@ nav h1 {
 	position: absolute;
     right: 10px;
     top: 10px;
-    background-color: #FBC034;
+    background-color: #00509a;
     color: white;
     padding: 5px 10px;
     font-size: 10px;
